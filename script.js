@@ -222,6 +222,42 @@ function showBestRacePerMeeting() {
 
 let processedRaces = [];
 
+// === NEW FUNCTION FOR DOWNLOAD ===
+function downloadTXT() {
+  if (!processedRaces || processedRaces.length === 0) {
+    alert("No data available to download. Please process races first.");
+    return;
+  }
+
+  let textContent = "UK RAFFLE-ELIGIBLE RACES REPORT\n";
+  textContent += "Generated on: " + new Date().toLocaleString() + "\n";
+  textContent += "========================================\n\n";
+
+  processedRaces.forEach((r, index) => {
+    textContent += `Race #${index + 1}\n`;
+    textContent += `Course: ${r.meeting}\n`;
+    textContent += `Race Number: ${r.raceNumber}\n`;
+    textContent += `UK Time: ${r.ukTime}\n`;
+    textContent += `SL Time: ${r.rawSLTime}\n`;
+    textContent += `Race Name: ${r.raceName}\n`;
+    textContent += `Prize Money: £${r.prize.toLocaleString()}\n`;
+    textContent += `----------------------------------------\n`;
+  });
+
+  textContent += "\nCopyright © 2025 Charith Neranga. All rights reserved.";
+
+  const blob = new Blob([textContent], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = "Races_Report.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+
 
 
 
