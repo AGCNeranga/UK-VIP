@@ -1,3 +1,10 @@
+/* ======================================================
+COPYRIGHT © 2026 | LS Publication Dept.
+Developed by Charith Neranga
+CANARY_ID: CN_RACE_JS_LOGIC_99821
+======================================================
+*/
+
 // === Smooth Background Slideshow ===
 const bgImages = [
   "https://wallpapercat.com/w/full/b/b/8/2131817-2560x1600-desktop-hd-horse-racing-wallpaper-photo.jpg",
@@ -127,7 +134,7 @@ function processText() {
       raceNumberCounter++;
       const ukTime = line;
       let slTime = 'N/A';
-      if (i + 1 < lines.length && /^\(\d{1,2}\.\d{2}\)$/.test(lines[i + 1].trim())) {
+      if (i + 1 < lines.length && /^\(\d{1,2}\.\d.2\)$/.test(lines[i + 1].trim())) {
         slTime = lines[i + 1].trim().slice(1, -1);
         i++;
       }
@@ -256,9 +263,3 @@ function downloadTXT() {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
-
-
-
-
-
-
